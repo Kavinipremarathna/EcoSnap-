@@ -33,7 +33,7 @@ export default async function handler(req, res) {
       return res.status(502).json({ error: "hf_failed", detail: txt.slice(0, 400) });
     }
 
-    const preds = await r.json(); // array [{label, score}]
+    const preds = await r.json(); // array [{label, score}]..
     const top3 = Array.isArray(preds) ? preds.slice(0, 3) : [];
     const top = top3[0] || { label: "unknown", score: 0.5 };
     const category = labelToCategory(top.label);
